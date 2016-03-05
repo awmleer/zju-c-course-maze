@@ -8,7 +8,7 @@ int route[81][2];//route数组用来记录走过的路径信息
 int routei=0;
 
 char scan(int x, int y);
-int next(int x, int y);
+void next(int x, int y);
 void back();
 
 
@@ -18,13 +18,16 @@ char scan(int x,int y){
 	if (maze[x+1][y] == 0)return 'd';
 	if (maze[x][y-1] == 0)return 'l';
 	if (maze[x-1][y] == 0)return 'u';
+	printf("SCAN and result n:%d,%d\n", x, y);
 	return 'n';
 }
-int next(int x,int y){
+void next(int x,int y){
+	printf("get to:%d,%d\n", x, y);
 	//判断是否走到终点
-	if (x==9 && y==9)
+	if (x==8 && y==8)
 	{
-		return 1;//如果到达终点直接返回1
+		printf("end!\n");
+		return;//如果到达终点直接返回1
 	}
 
 	if (maze[x][y+1]==0){//右
@@ -67,7 +70,8 @@ void back(){
 	do
 	{
 		routei--;
-	} while (scan(route[routei][0],route[routei][1]));
+		printf("  back:%d,%d\n", route[routei][0], route[routei][1]);
+	} while (scan(route[routei][0],route[routei][1])=='n');
 	//继续往下走
 	next(route[routei][0], route[routei][1]);
 }
@@ -89,11 +93,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	next(1, 1);
 
 	//输出路径
-	for (int i = 0; i < routei; i++)
+	for (int i = 0; i <= routei; i++)
 	{
 		printf("(%d,%d)\n", route[i][0], route[i][1]);
 	}
 
 	getchar();
+	getchar();
+
 	return 0;
 }
