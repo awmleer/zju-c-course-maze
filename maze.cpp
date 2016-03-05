@@ -83,6 +83,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	//从1,1开始走
 	next(1, 1);
 
+	//输出路径
+	for (int i = 0; i < routei; i++)
+	{
+		printf("(%d,%d)\n", route[i][0], route[i][1]);
+	}
+
 	getchar();
 	return 0;
 }
