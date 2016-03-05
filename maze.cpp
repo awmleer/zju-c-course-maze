@@ -27,25 +27,29 @@ int next(int x,int y){
 		route[routei][0] = x;
 		route[routei][1] = y+1;
 		routei++;
+		maze[x][y + 1]=2;//把该格子标成2
 		next(x, y + 1);//再继续走下一步
 	}
 	else if (maze[x + 1][y] == 0){//下
 		route[routei][0] = x+1;
 		route[routei][1] = y;
 		routei++;
-		next(x+1, y);
+		maze[x+1][y] = 2;//把该格子标成2
+		next(x + 1, y);
 	}
 	else if (maze[x][y-1] == 0){//左
 		route[routei][0] = x;
 		route[routei][1] = y-1;
 		routei++;
+		maze[x][y - 1] = 2;//把该格子标成2
 		next(x, y - 1);
 	}
 	else if (maze[x-1][y] == 0){//上
 		route[routei][0] = x-1;
 		route[routei][1] = y;
 		routei++;
-		next(x-1, y);
+		maze[x-1][y] = 2;//把该格子标成2
+		next(x - 1, y);
 	}
 	else//无路可走
 	{
@@ -54,7 +58,7 @@ int next(int x,int y){
 }
 
 int back(int x,int y){
-	//清除route   直到
+	//清除route   直到周围有路可以走
 }
 
 int _tmain(int argc, _TCHAR* argv[])
