@@ -7,6 +7,11 @@ int maze[10][10];//maze数组用来记录迷宫的信息
 int route[81][2];//route数组用来记录走过的路径信息
 int routei=0;
 
+char scan(int x, int y);
+int next(int x, int y);
+void back();
+
+
 //扫描周围一圈是否可走
 char scan(int x,int y){
 	if (maze[x][y + 1] == 0)return 'r';
@@ -57,7 +62,7 @@ int next(int x,int y){
 	}
 }
 
-int back(){
+void back(){
 	//routei倒退  直到周围有路可以走
 	do
 	{
@@ -71,9 +76,9 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 
 	//输入数据
-	for (i = 0; i<10; i++)
-	for (j = 0; j<10; j++)
-		scanf("%d", &maze[i][j]);
+	for (int i = 0; i<10; i++)
+	for (int j = 0; j<10; j++)
+		scanf_s("%d", &maze[i][j]);
 	//maze数组中  0表示空格  1表示墙  2表示已经走过的路径
 	
 	//初始化route
