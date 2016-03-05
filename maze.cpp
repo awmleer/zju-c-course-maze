@@ -7,6 +7,14 @@ int maze[10][10];//maze数组用来记录迷宫的信息
 int route[81][2];//route数组用来记录走过的路径信息
 int routei=0;
 
+//扫描周围一圈是否可走
+char scan(int x,int y){
+	if (maze[x][y + 1] == 0)return 'r';
+	if (maze[x+1][y] == 0)return 'd';
+	if (maze[x][y-1] == 0)return 'l';
+	if (maze[x-1][y] == 0)return 'u';
+	return 'n';
+}
 int next(int x,int y){
 	//判断是否走到终点
 	if (x==9 && y==9)
@@ -46,7 +54,7 @@ int next(int x,int y){
 }
 
 int back(int x,int y){
-
+	//清除route   直到
 }
 
 int _tmain(int argc, _TCHAR* argv[])
