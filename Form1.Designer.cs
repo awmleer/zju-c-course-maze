@@ -129,25 +129,27 @@
             this.button97 = new System.Windows.Forms.Button();
             this.button98 = new System.Windows.Forms.Button();
             this.button99 = new System.Windows.Forms.Button();
+            this.clear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(258, 583);
+            this.start.Location = new System.Drawing.Point(135, 577);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(120, 42);
             this.start.TabIndex = 0;
-            this.start.Text = "start";
+            this.start.Text = "开始";
             this.start.UseVisualStyleBackColor = true;
             this.start.Click += new System.EventHandler(this.button1_Click);
             // 
             // button00
             // 
+            this.button00.BackColor = System.Drawing.Color.Gainsboro;
             this.button00.Location = new System.Drawing.Point(36, 12);
             this.button00.Name = "button00";
             this.button00.Size = new System.Drawing.Size(62, 56);
             this.button00.TabIndex = 1;
-            this.button00.UseVisualStyleBackColor = true;
+            this.button00.UseVisualStyleBackColor = false;
             this.button00.Click += new System.EventHandler(this.button00_Click);
             // 
             // button01
@@ -1041,11 +1043,22 @@
             this.button99.UseVisualStyleBackColor = true;
             this.button99.Click += new System.EventHandler(this.button99_Click);
             // 
+            // clear
+            // 
+            this.clear.Location = new System.Drawing.Point(295, 575);
+            this.clear.Name = "clear";
+            this.clear.Size = new System.Drawing.Size(116, 43);
+            this.clear.TabIndex = 4;
+            this.clear.Text = "清空";
+            this.clear.UseVisualStyleBackColor = true;
+            this.clear.Click += new System.EventHandler(this.clear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 647);
+            this.Controls.Add(this.clear);
             this.Controls.Add(this.button99);
             this.Controls.Add(this.button89);
             this.Controls.Add(this.button79);
@@ -1148,7 +1161,7 @@
             this.Controls.Add(this.button00);
             this.Controls.Add(this.start);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "maze";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
@@ -1257,6 +1270,7 @@
         private System.Windows.Forms.Button button97;
         private System.Windows.Forms.Button button98;
         private System.Windows.Forms.Button button99;
+        private System.Windows.Forms.Button clear;
     }
 }
 

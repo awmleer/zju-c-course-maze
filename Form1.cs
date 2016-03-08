@@ -123,9 +123,30 @@ namespace maze_withGUI_
 
         }
 
+
+        private void clear_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i <= 9; i++)
+            {
+                for (int j = 0; j <= 9; j++)
+                {
+                    a[i, j] = 0;//清空a数组
+                    routei = 0;//清空routei
+                    ((Button)(this.Controls.Find("button" + i + j, false)[0])).Text = "";//清空按钮的文字
+                    ((Button)(this.Controls.Find("button" + i + j, false)[0])).BackColor = Color.Gainsboro;//清空颜色
+                }
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            for (int i = 0; i <= 9; i++)
+            {
+                for (int j = 0; j <= 9; j++)
+                {
+                    ((Button)(this.Controls.Find("button" + i + j, false)[0])).BackColor = Color.Gainsboro;//初始化颜色
+                }
+            }
         }
 
 
