@@ -20,14 +20,107 @@ namespace maze_withGUI_
         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, 
         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
+
+        int [,]route=new int[81,2];//route数组用来记录走过的路径信息
+        int routei=0;
+
+
+        //扫描周围一圈是否可走
+        char scan(int x, int y)
+        {
+            if (a[x,y + 1] == 0) return 'r';
+            if (a[x + 1,y] == 0) return 'd';
+            if (a[x,y - 1] == 0) return 'l';
+            if (a[x - 1,y] == 0) return 'u';
+            return 'n';
+        }
+        void next(int x, int y)
+        {
+            //判断是否走到终点
+            if (x == 8 && y == 8)
+            {
+                return;//如果到达终点直接返回1
+            }
+
+            if (a[x,y + 1] == 0)
+            {//右
+                //记录这一步的信息
+                routei++;
+                route[routei,0] = x;
+                route[routei,1] = y + 1;
+                a[x,y + 1] = 2;//把该格子标成2
+                next(x, y + 1);//再继续走下一步
+            }
+            else if (a[x + 1,y] == 0)
+            {//下
+                routei++;
+                route[routei,0] = x + 1;
+                route[routei,1] = y;
+                a[x + 1,y] = 2;
+                next(x + 1, y);
+            }
+            else if (a[x,y - 1] == 0)
+            {//左
+                routei++;
+                route[routei,0] = x;
+                route[routei,1] = y - 1;
+                a[x,y - 1] = 2;
+                next(x, y - 1);
+            }
+            else if (a[x - 1,y] == 0)
+            {//上
+                routei++;
+                route[routei,0] = x - 1;
+                route[routei,1] = y;
+                a[x - 1,y] = 2;
+                next(x - 1, y);
+            }
+            else//无路可走
+            {
+                back();
+            }
+        }
+
+        void back()
+        {
+            //routei倒退  直到周围有路可以走
+            do
+            {
+                routei--;
+            } while (scan(route[routei,0], route[routei,1]) == 'n');
+            //继续往下走
+            next(route[routei,0], route[routei,1]);
+        }
+
+
+
+
+
+
+
+
         public Form1()
         {
             InitializeComponent();
         }
 
+
+        //开始计算路线
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            //初始化route
+            route[0,0] = 1;
+            route[0,1] = 1;
+
+            //从1,1开始走
+            next(1, 1);
+
+            //输出路径
+            for (int i = 0; i <= routei; i++)
+            {
+                printf("(%d,%d)\n", route[i,0], route[i,1]);
+            }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
