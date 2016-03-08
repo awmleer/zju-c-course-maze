@@ -118,7 +118,7 @@ namespace maze_withGUI_
             //输出路径
             for (int i = 0; i <= routei; i++)
             {
-                printf("(%d,%d)\n", route[i,0], route[i,1]);
+                ((Button)(this.Controls.Find("button" + route[i, 0] + route[i, 1], false)[0])).Text = "●";  
             }
 
         }
