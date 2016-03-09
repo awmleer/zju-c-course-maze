@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -122,8 +123,9 @@ namespace maze_withGUI_
             //输出路径
             for (int i = 0; i <= routei; i++)
             {
-                for (int nothing = 0; nothing <= 1000; nothing++) ;
-                    ((Button)(this.Controls.Find("button" + route[i, 0] + route[i, 1], false)[0])).Text = "●";  
+                Thread.Sleep(500);
+                ((Button)(this.Controls.Find("button" + route[i, 0] + route[i, 1], false)[0])).Text = "●";
+                Application.DoEvents();
             }
 
         }
