@@ -134,7 +134,7 @@
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(135, 577);
+            this.start.Location = new System.Drawing.Point(189, 572);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(120, 42);
             this.start.TabIndex = 0;
@@ -1045,7 +1045,7 @@
             // 
             // clear
             // 
-            this.clear.Location = new System.Drawing.Point(295, 575);
+            this.clear.Location = new System.Drawing.Point(349, 570);
             this.clear.Name = "clear";
             this.clear.Size = new System.Drawing.Size(116, 43);
             this.clear.TabIndex = 4;

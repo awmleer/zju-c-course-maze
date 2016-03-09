@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+
+//TODO    延迟显示路径点
 namespace maze_withGUI_
 {
     public partial class Form1 : Form
@@ -34,6 +36,7 @@ namespace maze_withGUI_
             if (a[x - 1,y] == 0) return 'u';
             return 'n';
         }
+
         void next(int x, int y)
         {
             //判断是否走到终点
@@ -113,6 +116,7 @@ namespace maze_withGUI_
             route[0,1] = 1;
 
             //从1,1开始走
+            a[1, 1] = 2;
             next(1, 1);
 
             //输出路径
@@ -126,9 +130,9 @@ namespace maze_withGUI_
 
         private void clear_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i <= 9; i++)
+            for (int i = 1; i <= 8; i++)
             {
-                for (int j = 0; j <= 9; j++)
+                for (int j = 1; j <= 8; j++)
                 {
                     a[i, j] = 0;//清空a数组
                     routei = 0;//清空routei
@@ -140,13 +144,26 @@ namespace maze_withGUI_
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i <= 9; i++)
+            for (int i = 0; i <=9; i++)
             {
                 for (int j = 0; j <= 9; j++)
                 {
-                    ((Button)(this.Controls.Find("button" + i + j, false)[0])).BackColor = Color.Gainsboro;//初始化颜色
+                    if (i == 0 || i == 9 || j == 0 || j == 9)
+                    {
+                        //墙
+                        a[i, j] = 1;
+                        ((Button)(this.Controls.Find("button" + i + j, false)[0])).BackColor = Color.Maroon;
+                    }
+                    else
+                    {
+                        ((Button)(this.Controls.Find("button" + i + j, false)[0])).BackColor = Color.Gainsboro;//初始化颜色
+                    }
                 }
             }
+
+            //初始化起点和终点
+            ((Button)(this.Controls.Find("button11",false)[0])).BackColor = Color.Yellow;
+            ((Button)(this.Controls.Find("button88", false)[0])).BackColor = Color.LawnGreen;
         }
 
 
