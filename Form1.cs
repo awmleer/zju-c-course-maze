@@ -8,7 +8,6 @@ using System.Threading;
 using System.Windows.Forms;
 
 
-//TODO    延迟显示路径点
 namespace maze_withGUI_
 {
     public partial class Form1 : Form
@@ -177,6 +176,12 @@ namespace maze_withGUI_
             ((Button)(this.Controls.Find("button88", false)[0])).BackColor = Color.LawnGreen;
         }
 
+
+        //帮助按钮
+        private void help_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("迷宫\n颜色：砖红色的方格表示墙，绿色的方格表示终点，黄色的方格表示起点。\n操作：点击方格可以把该格子标成是墙，点击开始会自动求解路线。\n");
+        }
 
         private void button00_Click(object sender, EventArgs e)
         {
