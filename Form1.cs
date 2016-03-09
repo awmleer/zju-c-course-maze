@@ -122,7 +122,8 @@ namespace maze_withGUI_
             //输出路径
             for (int i = 0; i <= routei; i++)
             {
-                ((Button)(this.Controls.Find("button" + route[i, 0] + route[i, 1], false)[0])).Text = "●";  
+                for (int nothing = 0; nothing <= 1000; nothing++) ;
+                    ((Button)(this.Controls.Find("button" + route[i, 0] + route[i, 1], false)[0])).Text = "●";  
             }
 
         }
@@ -134,12 +135,20 @@ namespace maze_withGUI_
             {
                 for (int j = 1; j <= 8; j++)
                 {
-                    a[i, j] = 0;//清空a数组
-                    routei = 0;//清空routei
-                    ((Button)(this.Controls.Find("button" + i + j, false)[0])).Text = "";//清空按钮的文字
-                    ((Button)(this.Controls.Find("button" + i + j, false)[0])).BackColor = Color.Gainsboro;//清空颜色
+                    if ((i == 1 && j == 1) || (i == 8 && j == 8))
+                    {
+                        a[i, j] = 0;//清空a数组
+                        ((Button)(this.Controls.Find("button" + i + j, false)[0])).Text = "";//清空按钮的文字
+                    }
+                    else
+                    {
+                        a[i, j] = 0;//清空a数组
+                        ((Button)(this.Controls.Find("button" + i + j, false)[0])).Text = "";//清空按钮的文字
+                        ((Button)(this.Controls.Find("button" + i + j, false)[0])).BackColor = Color.Gainsboro;//清空颜色
+                    }
                 }
             }
+            routei = 0;//清空route
         }
 
         private void Form1_Load(object sender, EventArgs e)
