@@ -18,15 +18,12 @@ char scan(int x,int y){
 	if (maze[x+1][y] == 0)return 'd';
 	if (maze[x][y-1] == 0)return 'l';
 	if (maze[x-1][y] == 0)return 'u';
-	printf("SCAN and result n:%d,%d\n", x, y);
 	return 'n';
 }
 void next(int x,int y){
-	printf("get to:%d,%d\n", x, y);
 	//判断是否走到终点
 	if (x==8 && y==8)
 	{
-		printf("end!\n");
 		return;//如果到达终点直接返回1
 	}
 
@@ -70,7 +67,6 @@ void back(){
 	do
 	{
 		routei--;
-		printf("  back:%d,%d\n", route[routei][0], route[routei][1]);
 	} while (scan(route[routei][0],route[routei][1])=='n');
 	//继续往下走
 	next(route[routei][0], route[routei][1]);
